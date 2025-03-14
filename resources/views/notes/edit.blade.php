@@ -10,7 +10,7 @@
             <a class="btn btn-primary btn-sm" href="{{ route('notes.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
 
-        <form action="{{ route('notes.update',$note->id) }}" method="POST">
+        <form action="{{ route('notes.update', $note->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -18,43 +18,46 @@
                 <label for="inputTitle" class="form-label"><strong>Title:</strong></label>
                 <input
                     type="text"
-                    Title="Title"
-                    value="{{ $note->title }}"
-                    class="form-control @error('Title') is-invalid @enderror"
+                    name="title"  
+                    value="{{ old('title', $note->title) }}"
+                    class="form-control @error('title') is-invalid @enderror"
                     id="inputTitle"
                     placeholder="Title">
-                @error('Title')
+                @error('title')
                     <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="inputcontent" class="form-label"><strong>content:</strong></label>
+                <label for="inputContent" class="form-label"><strong>Content:</strong></label>
                 <textarea
                     class="form-control @error('content') is-invalid @enderror"
                     style="height:150px"
-                    Title="content"
-                    id="inputcontent"
-                    placeholder="content">{{ $note->content }}</textarea>
+                    name="content"  
+                    id="inputContent"
+                    placeholder="Content">{{ old('content', $note->content) }}</textarea>
                 @error('content')
                     <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="mb-3">
-                <label for="inputsubject" class="form-label"><strong>subject:</strong></label>
+                <label for="inputSubject" class="form-label"><strong>Subject:</strong></label>
                 <textarea
                     class="form-control @error('subject') is-invalid @enderror"
                     style="height:150px"
-                    Title="subject"
-                    id="inputsubjectt"
-                    placeholder="subject">{{ $note->content }}</textarea>
+                    name="subject" 
+                    id="inputSubject"
+                    placeholder="Subject">{{ old('subject', $note->subject) }}</textarea>
                 @error('subject')
                     <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
             <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Update</button>
         </form>
 
     </div>
 </div>
+
 @endsection
