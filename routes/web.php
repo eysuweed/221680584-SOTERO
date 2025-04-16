@@ -10,6 +10,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'showLoginForm']);
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
+
 Route::resource('notes', NoteController::class);
 
 Route::get('/', function () {
